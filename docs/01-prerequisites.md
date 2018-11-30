@@ -6,6 +6,7 @@
 1. Login with a Red Hat Account
 1. Download the Pull Secret to location on host (e.g. ~/Downloads/pull-secret)
 1. Download the Installer release for your platform
+1. Download Terraform
 
 ### Linux
 
@@ -13,6 +14,7 @@
 wget https://github.com/openshift/installer/releases/download/v0.4.0/openshift-install-linux-amd64
 chmod u+x ./openshift-install-linux-amd64
 export OPENSHIFT_INSTALL_PULL_SECRET_PATH=~/Downloads/pull-secret
+curl -L "https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_linux_amd64.zip" | funzip terraform
 ```
 
 ### Mac
@@ -21,6 +23,7 @@ export OPENSHIFT_INSTALL_PULL_SECRET_PATH=~/Downloads/pull-secret
 curl -O -L https://github.com/openshift/installer/releases/download/v0.4.0/openshift-install-darwin-amd64
 chmod +x ./openshift-install-darwin-amd64
 export OPENSHIFT_INSTALL_PULL_SECRET_PATH=~/Downloads/pull-secret
+curl -L https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_darwin_amd64.zip | funzip terraform
 ```
 
 
