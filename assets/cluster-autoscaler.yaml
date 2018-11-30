@@ -12,10 +12,6 @@ spec:
     memory:
       min: 4
       max: 256
-    gpus:
-      - type: nvidia.com/gpu
-        min: 0
-        max: 16
   scaleDown:
     enabled: true
     delayAfterAdd: 10s
