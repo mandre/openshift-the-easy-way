@@ -39,4 +39,4 @@ decarr-worker-us-east-2b   5h
 decarr-worker-us-east-2c   5h
 ```
 
-Next: [Highly Available Workers](05-highly-available-control-plane.md)
+Next: [Highly Available Workers](05-highly-available-workers.md)
