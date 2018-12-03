@@ -4,8 +4,9 @@ This tutorial describes the top level operator that manages cluser updates.
 
 ## Cluster Version Operator
 
-This operator manages cluster updates.  It continously reconciles an update payload
-with the Kubernetes API server to ensure the desired cluster version is the actual version.
+This operator manages cluster updates.  It continously reconciles an update
+payload with the Kubernetes API server to ensure the desired cluster version is
+the actual version.
 
 To view the operator, execute the following:
 
@@ -14,9 +15,6 @@ oc get deployments -n openshift-cluster-version
 NAME                       DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
 cluster-version-operator   1         1         1            1           1h
 ```
-
-The operator continuously reconciles the desired configuration of the cluster
-against its observed status by applying the release update payload.
 
 ## Release Update Payload
 
