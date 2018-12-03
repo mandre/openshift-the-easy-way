@@ -27,4 +27,4 @@ decarr-worker-us-east-2c	1
 
 coming soon...
 
-Next: [Cluster Autoscaling](06-cluster-autoscaling.md) 
+Next: [Cluster Autoscaler](06-cluster-autoscaler.md) 
