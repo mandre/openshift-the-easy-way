@@ -11,9 +11,9 @@ powerful, declarative automation primitives.
 
 OpenShift provides a `ClusterVersionOperator` that manages a set of operators to
 install, update, and lifecycle Kubernetes itself.  These operators allow us to
-manage the core control plane components as a Kubernetes native application.  The
-`ClusterVersionOperator` manages a minimal set of components required to bring up
-an OpenShift service.
+manage the core control plane components as a Kubernetes native application. The
+`ClusterVersionOperator` manages a minimal set of components required to bring
+up an OpenShift service.
 
 ## Managing applications on the platform
 

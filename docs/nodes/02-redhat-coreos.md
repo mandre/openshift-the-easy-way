@@ -2,7 +2,8 @@
 
 This tutorial will guide you through the basics of Red Hat CoreOS.
 
-Red Hat CoreOS is the immutable, container-optimized operating system for OpenShift.
+Red Hat CoreOS is the immutable, container-optimized operating system for
+OpenShift.
 
 ## Accessing the host
 
@@ -40,7 +41,8 @@ Linux 3.10.0-957.1.3.el7.x86_64
 
 ## Ignition
 
-Executes during early boot and writes files (regular files, systemd units, etc.) required to configure the host.
+Executes during early boot and writes files (regular files, systemd units, etc.)
+required to configure the host.
 
 The configuration is served from the control plane.
 
@@ -64,8 +66,8 @@ systemctl status kubelet -l
 ```
 
 ## CRI-O
-Container runtime for Kubernetes.
-To view status for `cri-o`, execute the following:
+Container runtime for Kubernetes. To view status for `cri-o`, execute the
+following:
 
 ```sh
 systemctl status crio
@@ -99,6 +101,7 @@ sudo podman ps
 
 # Next
 
-In the next step, we will explore how OpenShift nodes are configured via an operator.
+In the next step, we will explore how OpenShift nodes are configured via an
+operator.
 
 Next: [Maching Config](03-machine-config.md)
