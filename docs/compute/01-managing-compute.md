@@ -2,17 +2,20 @@
 
 This tutorial will walk you through managing compute instances.
 
-## Bootstrapping
+# Machine API
 
-The installer provisions the required infrastructure to run the cluster.
+OpenShift uses the machine API types introduced by the [Kubernetes Cluster
+API](https://github.com/kubernetes-sigs/cluster-api).
 
-The installer creates a highly-available control plane by creating `master` machine in each zone.
+This enables administrators to introspect and manage machines in the cluster
+using a Kubernetes native approach.
 
-After the control plane is bootstrapped, OpenShift uses the machine API types
-introduced by the [Kubernetes Cluster API](https://github.com/kubernetes-sigs/cluster-api) to
-adopt those machines and bring them under management of the cluster.
+## Machine
 
-To see the machines, you can run the following command:
+The `Machine` object represents a "Kubernetes machine" that can run workloads in
+the cluster.
+
+To see the machines in the cluster, you can run the following command:
 
 ```sh
 oc get machines -n openshift-cluster-api
@@ -25,76 +28,75 @@ decarr-worker-us-east-2b-bj9dz   3h
 decarr-worker-us-east-2c-w2pfs   3h
 ```
 
-## Control Plane
+The specification for each machine is specific to each target cloud platform.
 
-The control plane is executed on machines that have the `sigs.k8s.io/cluter-api-machine-type=master` label.
+### Amazon Web Services
 
-To find all machines that run the control plane, execute the following:
+If you are using the machine API on Amazon Web Services, the
+`.spec.providerConfig` section of a `Machine` resource describes how a machine
+should be provisioned on Amazon.
 
-```sh
-oc get machines -l sigs.k8s.io/cluster-api-machine-type=master -n openshift-cluster-api
-NAME              AGE
-decarr-master-0   3h
-decarr-master-1   3h
-decarr-master-2   3h
-```
-
-The nodes that run the control plane are special and are not backed by machine controller.
-
-Similar to pods, the cluster runs a control loop to ensure the master nodes always exist.
-
-## Workers
-
-The worker nodes run end-user workloads on the cluster.
-
-They execute on machines that have the `sigs.k8s.io/cluster-api-machine-type=worker` label.
-
-To find all worker machines, execute the following:
-
-```sh
-oc get machines -l sigs.k8s.io/cluster-api-machine-type=worker -n openshift-cluster-api
-NAME                             AGE
-decarr-worker-us-east-2a-gdbnm   4h
-decarr-worker-us-east-2b-bj9dz   4h
-decarr-worker-us-east-2c-w2pfs   4h
-```
-
-For each worker machine, you can find out provider specific information in its providerConfig.
-
-For example, on a cluster installed on `Amazon Web Services`, you can see the instance type, zone, and region.
+To list machines and their associated instance type, you can run the following
+command:
 
 ```sh
 oc get machines -n openshift-cluster-api -o jsonpath='{range .items[*]}{"\n"}{.metadata.name}{"\t"}{.spec.providerConfig.value.instanceType}{end}{"\n"}'
+decarr-master-0 m4.large
+decarr-master-1 m4.large
+decarr-master-2 m4.large
+decarr-worker-us-east-2a-9vcvt  m4.large
+decarr-worker-us-east-2b-b4hfj  m4.large
+decarr-worker-us-east-2c-q5pdm  m4.large
 ```
 
-Unlike control plane nodes, worker nodes are backed by the `MachineSet` machine controller.
+## MachineSets
 
-To view all machine sets, execute the following:
+The `MachineSet` object allows an admin to request a desire for a specific
+number of machines replicated from a common `Machine` template.
+
+To see the machine sets in the cluster, you can run the following command:
 
 ```sh
 oc get machinesets -n openshift-cluster-api
 NAME                       AGE
-decarr-worker-us-east-2a   5h
-decarr-worker-us-east-2b   5h
-decarr-worker-us-east-2c   5h
+decarr-worker-us-east-2a   23m
+decarr-worker-us-east-2b   23m
+decarr-worker-us-east-2c   23m
 ```
 
-A `MachineSet` ensures a desired number of replica `Machines` exist similar to a `ReplicaSet` ensuring a desired number of `Pods`.
+# Machine Lifecycle
 
-To view the number of replicas for each `MachineSet`, execute the following:
+## Provisioning
 
+To provision a new machine, the user can create a new `Machine`.
+
+An easy way to create a new machine is to scale up a `MachineSet`.
+
+To scale a `MachineSet` to 5 replicas, you can run the following command:
 
 ```sh
-oc get machinesets -n openshift-cluster-api -o jsonpath='{range .items[*]}{"\n"}{.metadata.name}{"\t"}{.status.replicas}{end}{"\n"}'
-decarr-worker-us-east-2a	1
-decarr-worker-us-east-2b	1
-decarr-worker-us-east-2c	1
+oc patch -n openshift-cluster-api machineset/decarr-worker-us-east-2a -p '{"spec":{"replicas":5}}'
+TODO add machine listing showing new machine
+TODO add node listing showing new node
 ```
 
-Each machine set manages a pool of nodes in a given region and zone.
+## Deprovisioning
 
-Users are able to construct new `MachineSets` that reference different classes of machine types.
+To deprovision a machine, the user can delete a `Machine` resource.
 
-The `MachineSet` construct enables primitives to perform scaling and health checks across a pool of common machines.
+An easy way to delete a machine is to scale down a `MachineSet`.
 
-Next: [Cluster Autoscaling](02-cluster-autoscaling.md)
+```sh
+TODO
+```
+
+Prior to deleting the machine, the node is cordoned and drained of its pods.
+
+# Next steps
+
+The machine API provides a powerful primitive to manage compute in the cluster.
+
+In the following sections, we will see how it is used to lifecycle compute for
+the cluster.
+
+Next: [Control Plane](02-control-plane.md)
