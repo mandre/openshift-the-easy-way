@@ -43,11 +43,8 @@ This resource lets you define a min and max size for a given set.
 
 ```sh
 oc create -f https://raw.githubusercontent.com/derekwaynecarr/openshift-the-easy-way/master/assets/machine-autoscale-us-east-2a.yaml
-machineautoscaler.autoscaling.openshift.io/autoscale-us-east-2a-6swbn
 oc create -f https://raw.githubusercontent.com/derekwaynecarr/openshift-the-easy-way/master/assets/machine-autoscale-us-east-2b.yaml
-machineautoscaler.autoscaling.openshift.io/autoscale-us-east-2b-z4xlg
 oc create -f https://raw.githubusercontent.com/derekwaynecarr/openshift-the-easy-way/master/assets/machine-autoscale-us-east-2c.yaml
-machineautoscaler.autoscaling.openshift.io/autoscale-us-east-2c-grwkc
 ```
 
 The `MachineAutoscaler` controller will detect the desired state and apply annotations
@@ -96,6 +93,8 @@ After ~3m, you should see the new nodes go ready:
 oc get nodes
 ```
 
-Once the workload completes, the machine sets should all resize to 1.
+Each job in the work queue will run for ~5m.
+
+As jobs complete, the cluster shrinks in size and machines are removed.
 
 Next: [Health Checks](08-health-checks.md)

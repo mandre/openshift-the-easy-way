@@ -8,12 +8,12 @@ spec:
       containers:
       - name: work
         image: busybox
-        command: ["sleep",  "600"]
+        command: ["sleep",  "300"]
         resources:
           requests:
             memory: 500Mi
             cpu: 500m
       restartPolicy: Never
   backoffLimit: 4
-  completions: 100
-  parallelism: 100
+  completions: 50
+  parallelism: 50

@@ -12,7 +12,7 @@ Depending on your interest, explore the following:
 - [Accessing the console](console/01-accessing.md)
 - [Understanding operators](operators/01-understanding-operators.md)
 - [Managing Compute](compute/01-managing-compute.md)
-- [Accessing Nodes](nodes/01-understanding-nodes.md)
+- [Managing Nodes](nodes/01-managing-nodes.md)
 - [Monitoring](monitoring/01-understanding-monitoring.md)
 - [Developer Experience](developer-experience/01-developer-experience.md)
 
