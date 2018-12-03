@@ -25,6 +25,8 @@ Red Hat CoreOS 4.0
 ---
 ```
 
+**NOTE** In the future, accessing a host via `ssh` will taint the node.
+
 ## RHEL Kernel and Content
 
 Red Hat CoreOS runs a RHEL kernel and uses RHEL content.
