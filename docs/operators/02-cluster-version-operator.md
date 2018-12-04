@@ -134,7 +134,6 @@ execute the following:
 
 ```sh
 oc adm release info registry.svc.ci.openshift.org/openshift/origin-release:v4.0 --commits
-oc adm release info registry.svc.ci.openshift.org/openshift/origin-release:v4.0 --commits
 Name:      4.0.0-0.alpha-2018-12-04-003938
 Digest:    sha256:c954d27201756060e26595a2861e5fde5ed3012743502f75277fe6735197b5f1
 Created:   2018-12-03 19:40:39 -0500 EST
@@ -212,9 +211,6 @@ deployments or daemonsets that drive individual operator behavior.
 To view the release update manifests, execute the following:
 
 ```sh
-oc get pods -n openshift-cluster-version
-NAME                                       READY     STATUS    RESTARTS   AGE
-cluster-version-operator-8bb6cff75-j6n5k   1/1       Running   0          1h
 oc rsh -n openshift-cluster-version deployments/cluster-version-operator
 sh-4.2# ls release-manifests
 0000_07_cluster-network-operator_00_namespace.yaml                     0000_50_machine-api-operator_00_namespace.yaml
