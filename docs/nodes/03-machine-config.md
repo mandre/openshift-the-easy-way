@@ -134,6 +134,41 @@ to each host by watching the `machineconfiguration.openshift.io/desiredConfig`
 annotation. If the `machineconfiguration.openshift.io/currentConfig` does not
 match, the daemon attempts an update.
 
+To see the list of nodes with their desired and current configuration, execute the following:
+
+```sh
+oc get nodes -o yaml | grep annotations -A 3
+    annotations:
+      machine: openshift-cluster-api/decarr-worker-us-east-2a-2dv5d
+      machineconfiguration.openshift.io/currentConfig: 830eef02a7bc439c3057486f00224d40
+      machineconfiguration.openshift.io/desiredConfig: 830eef02a7bc439c3057486f00224d40
+--
+    annotations:
+      machine: openshift-cluster-api/decarr-worker-us-east-2b-k9tc9
+      machineconfiguration.openshift.io/currentConfig: 830eef02a7bc439c3057486f00224d40
+      machineconfiguration.openshift.io/desiredConfig: 830eef02a7bc439c3057486f00224d40
+--
+    annotations:
+      machine: openshift-cluster-api/decarr-worker-us-east-2c-pqb9j
+      machineconfiguration.openshift.io/currentConfig: 830eef02a7bc439c3057486f00224d40
+      machineconfiguration.openshift.io/desiredConfig: 830eef02a7bc439c3057486f00224d40
+--
+    annotations:
+      machine: openshift-cluster-api/decarr-master-1
+      machineconfiguration.openshift.io/currentConfig: ff43b88a861697ce6c7d9cb0e5b3215a
+      machineconfiguration.openshift.io/desiredConfig: ff43b88a861697ce6c7d9cb0e5b3215a
+--
+    annotations:
+      machine: openshift-cluster-api/decarr-master-2
+      machineconfiguration.openshift.io/currentConfig: ff43b88a861697ce6c7d9cb0e5b3215a
+      machineconfiguration.openshift.io/desiredConfig: ff43b88a861697ce6c7d9cb0e5b3215a
+--
+    annotations:
+      machine: openshift-cluster-api/decarr-master-0
+      machineconfiguration.openshift.io/currentConfig: ff43b88a861697ce6c7d9cb0e5b3215a
+      machineconfiguration.openshift.io/desiredConfig: ff43b88a861697ce6c7d9cb0e5b3215a
+```
+
 During each update, it cordons, drains, and updates the host.  If an operating
 system image update is required, it is applied.  Finally, once all updates are
 completed, it reboots the host.
