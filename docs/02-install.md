@@ -100,8 +100,4 @@ export OPENSHIFT_INSTALL_BASE_DOMAIN=devcluster.example.com
 ./openshift-install-darwin-amd64 create cluster
 ```
 
-### OpenStack
-
-coming soon...
-
 Next: [Exploring the Cluster](03-explore.md)

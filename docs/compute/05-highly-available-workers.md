@@ -23,8 +23,4 @@ decarr-worker-us-east-2b	1
 decarr-worker-us-east-2c	1
 ```
 
-## OpenStack
-
-coming soon...
-
 Next: [Cluster Autoscaler](06-cluster-autoscaler.md) 
