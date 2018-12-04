@@ -1,0 +1,40 @@
+# Second Level Operators
+
+This tutorial describes second level operators that manage the core control plane.
+
+## Second Level Operators
+
+Any operator that is deployed by the cluster version operator directly via the
+release payload is refered to as a `Second Level Operator`.  This operator
+manages the artifacts needed to drive a minimal OpenShift distribution.
+
+Each operator handles install and upgrade of its component.  It also exposes
+mechanisms to enable administrators to configure the component.  The operator
+watches for the configuration change and applies it out to each manage component.
+Each operator reconciles to ensure it always converges to desired state.  As a
+result, the entire system is level-based rather than edge-based.  It acts on
+observed state rather than past actions.
+
+Each operator publishes it status to a `ClusterOperator` custom resource definition
+that is read by the `ClusterVersionOperator` to ensure the desired state has converged.
+
+To view the list of cluster operators and their status, execute the following:
+
+```sh
+oc get clusteroperators
+NAME                                                      VERSION                         AVAILABLE   PROGRESSING   SINCE
+machine-api-operator                                      v0.0.0-was-not-built-properly   True                      1m
+machine-config-operator                                   3.11.0-294-g77b0e7bc-dirty      True        False         16s
+openshift-cluster-kube-scheduler-operator                                                                           
+openshift-cluster-openshift-controller-manager-operator   3.11.0                          True        False         
+openshift-cluster-samples-operator                                                        True        False         1h
+```
+
+**TODO** UPDATE THIS SECTION WITH FULL LIST AS COMPONENTS MERGE
+
+# Next steps
+
+Optional components that administrators can install in the distribution are
+managed by Operator Lifecycle Manager.
+
+Next: [Operator Lifecycle Management](03-operator-lifecycle-manager.md)
