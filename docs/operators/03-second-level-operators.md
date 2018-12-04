@@ -30,11 +30,11 @@ openshift-cluster-openshift-controller-manager-operator   3.11.0                
 openshift-cluster-samples-operator                                                        True        False         1h
 ```
 
-**TODO** UPDATE THIS SECTION WITH FULL LIST AS COMPONENTS MERGE
+**TODO** UPDATE THIS SECTION WITH FULL LIST AS COMPONENTS MERGE THIS WEEK
 
 # Next steps
 
 Optional components that administrators can install in the distribution are
 managed by Operator Lifecycle Manager.
 
-Next: [Operator Lifecycle Management](03-operator-lifecycle-manager.md)
+Next: [Operator Lifecycle Management](04-operator-lifecycle-manager.md)

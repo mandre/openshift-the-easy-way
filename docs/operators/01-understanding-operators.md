@@ -17,10 +17,14 @@ up an OpenShift service.
 
 ## Managing applications on the platform
 
-Applications that run on the platform have the same install, update, and lifecycle
-managment problems as the control plane itself.  OpenShift provides the `Operator Lifecycle Manager` component to enable
-administrators to deploy optional parts of the OpenShift distribution while still maintaining
-the operatational benefits associated with operators.
+Applications that run on the platform have the same install, update, and
+lifecycle managment problems as the control plane itself.  OpenShift provides
+the `Operator Lifecycle Manager` component to enable administrators to deploy
+optional parts of the OpenShift distribution.  In addition, users can package
+and add their own components to `Operator Lifecycle Manager` for their own
+function. If the component is provided by Red Hat, a partner, or the end-user
+themselves, function delivered via `Operator Lifecycle Manager` have the
+operational benefits it provides to managing lifecycle of operators.
 
 # Next steps
 

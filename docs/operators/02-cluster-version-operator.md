@@ -215,19 +215,6 @@ To view the release update manifests, execute the following:
 oc get pods -n openshift-cluster-version
 NAME                                       READY     STATUS    RESTARTS   AGE
 cluster-version-operator-8bb6cff75-j6n5k   1/1       Running   0          1h
-
-```
-
-## Release Update Payload
-
-The update payload is built into the cluster version operator image.
-
-To view the release update payload, execute the following:
-
-```sh
-oc get pods -n openshift-cluster-version
-NAME                                       READY     STATUS    RESTARTS   AGE
-cluster-version-operator-8bb6cff75-j6n5k   1/1       Running   0          1h
 oc rsh -n openshift-cluster-version deployments/cluster-version-operator
 sh-4.2# ls release-manifests
 0000_07_cluster-network-operator_00_namespace.yaml                     0000_50_machine-api-operator_00_namespace.yaml
@@ -306,6 +293,15 @@ sh-4.2# ls release-manifests
 0000_50_cluster-autoscaler-operator_04_deployment.yaml
 ```
 
+If you view the logs of the cluster version operator, you can see
+its continously applying the desired state to avoid configuration drift.
+
+To see the logs, execute the following:
+
+```sh
+oc logs deployments/cluster-version-operator -n openshift-cluster-version
+```
+
 ## Understanding Upgrades
 
 In order to upgrade the cluster, one must update the version of the cluster
@@ -322,30 +318,9 @@ underlying cluster configuration which may have been applied manually is undone.
 As a result, upgrading the cluster is equivalent to deploying a new version of
 an application that runs on the platform.
 
-## Second Level Operators
-
-The cluster version operator manages a set of second level operators that know
-how to manage a particular binary or service required to run the cluster.  As a
-result, we call these operators second level operators.
-
-Each operator manages a particular binary or service needed to run the cluster.
-
-To view the list of cluster operators and their status, execute the following:
-
-```sh
-oc get clusteroperators
-NAME                                                      VERSION                         AVAILABLE   PROGRESSING   SINCE
-machine-api-operator                                      v0.0.0-was-not-built-properly   True                      1m
-machine-config-operator                                   3.11.0-294-g77b0e7bc-dirty      True        False         16s
-openshift-cluster-kube-scheduler-operator                                                                           
-openshift-cluster-openshift-controller-manager-operator   3.11.0                          True        False         
-openshift-cluster-samples-operator                                                        True        False         1h
-```
-**TODO** UPDATE THIS SECTION WITH FULL LIST
-
 # Next steps
 
-Optional components that administrators can install in the distribution are
-managed by Operator Lifecycle Manager.
+The set of operators deployed by the cluster version operator are called
+second level operators, learn more in the next tutorial.
 
-Next: [Operator Lifecycle Management](03-operator-lifecycle-manager.md)
+Next: [Second Level Operators](03-second-level-operators.md)
