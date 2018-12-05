@@ -1,9 +1,10 @@
 apiVersion: operators.coreos.com/v1alpha1
-  kind: Subscription
-  metadata:
-    name: federationv2
-    namespace: my-project
-  spec:
-    channel: alpha
-    name: federationv2
-    source: rh-operators
+kind: Subscription
+metadata:
+  generateName: federationv2-
+spec:
+  source: rh-operators
+  sourceNamespace: openshift-operator-lifecycle-manager
+  name: federationv2
+  startingCSV: federationv2.v0.0.2
+  channel: alpha
