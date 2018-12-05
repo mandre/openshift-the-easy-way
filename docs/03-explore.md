@@ -14,7 +14,7 @@ Depending on your interest, explore the following:
 - [Understanding operators](operators/01-understanding-operators.md)
 - [Managing Compute](compute/01-managing-compute.md)
 - [Managing Nodes](nodes/01-managing-nodes.md)
-- [Monitoring](monitoring/01-understanding-monitoring.md)
+- [Monitoring](monitoring/01-monitoring.md)
 - [Developer Experience](developer-experience/01-developer-experience.md)
 
 Next: [Cleanup the Cluster](04-cleanup.md)
