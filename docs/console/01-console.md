@@ -9,7 +9,7 @@ The web console is accessible via a `Route`.
 To access the console:
 
 ```sh
-oc get routes -n openshift-console console -o jsonpath='{"https://"}{.spec.host}{"\n"}'
+oc get routes -n openshift-console console -o jsonpath='{"https://"}{.spec.host}{"/"}{"\n"}'
 https://console-openshift-console.apps.mycluster.example.com
 ```
 
