@@ -127,4 +127,4 @@ Events:
   Normal  New Member Added  44s   etcd-operator-68b4997899-xtdsp  New member example-nvpgfnxnx7 added to cluster
 ```
 
-Next: [Configuration](04-configuration.md)
+Next: [Explore More](../03-explore.md)
