@@ -27,8 +27,8 @@ The administrator may configure the following options:
 - pod priority threshold that requires scale up of cluster if pod is pending
 - enable scale up, but not scale down
 
-The [file](../assets/cluster-autsocaler.yaml) demonstrates a `ClusterAutoscaler`
-object that restricts the cluster from scaling beyond 27 machines.
+The [file](../assets/cluster-autsocaler.yaml) demonstrates a sample
+`ClusterAutoscaler` object with all default options.
 
 ## Deploy Cluster Autoscaler
 
