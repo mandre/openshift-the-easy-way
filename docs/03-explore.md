@@ -10,7 +10,7 @@ Its just Kubernetes.
 Depending on your interest, explore the following:
 
 - [Using the CLI](cli/01-accessing.md)
-- [Accessing the console](console/01-accessing.md)
+- [Accessing the console](console/01-console.md)
 - [Understanding operators](operators/01-understanding-operators.md)
 - [Managing Compute](compute/01-managing-compute.md)
 - [Managing Nodes](nodes/01-managing-nodes.md)
