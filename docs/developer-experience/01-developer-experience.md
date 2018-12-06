@@ -19,7 +19,12 @@ oc new-app centos/ruby-25-centos7~https://github.com/sclorg/ruby-ex.git
 ```
 
 This will kick off a build of your source code on the platform to create an image.  The build is performed
-in a pod using [buildah](https://github.com/containers/buildah).
+in a [builder](https://github.com/openshift/builder) pod using [buildah](https://github.com/containers/buildah) as a library.
+
+Containers run by the builder pod using the buildah library are constrained by
+the pod security and cgroup limits. This enhances the security of the build.
+
+Using buildah also opens the door to support unprivileged builds in the future.
 
 To view the build logs, do the following:
 
