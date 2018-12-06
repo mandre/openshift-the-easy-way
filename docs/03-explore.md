@@ -9,6 +9,7 @@ Its just Kubernetes.
 
 Depending on your interest, explore the following:
 
+- [Advanced Install](install-advanced/01-install-advanced.md)
 - [Using the CLI](cli/01-accessing.md)
 - [Accessing the console](console/01-console.md)
 - [Understanding operators](operators/01-understanding-operators.md)
