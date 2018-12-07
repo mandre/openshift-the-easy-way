@@ -1,6 +1,6 @@
 # Cluster Version Operator
 
-This tutorial describes the top level operator that manages cluser updates.
+This tutorial describes the top level operator that manages cluster updates.
 
 ## Cluster Version
 

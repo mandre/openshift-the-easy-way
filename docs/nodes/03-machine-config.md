@@ -187,4 +187,29 @@ The machine config server is used to serve an ignition configuration for new
 machines that join the cluster.  This ensures that new machines always
 have the latest desired configuration applied prior to accepting workloads.
 
+## Add a file to each worker
+
+Here is a simple example that adds a file to each worker.
+
+The following machine config will target every worker, and add a file in `/etc/example-file`.
+
+```sh
+oc create -f https://raw.githubusercontent.com/derekwaynecarr/openshift-the-easy-way/master/assets/machine-config-custom-file.yaml
+```
+
+The machine config controller will see the new config, and render an updated configuration.
+Notice the latest configuration with the newest timestamp.
+
+```sh
+oc get machineconfigs
+```
+
+The controller will then coordinate the rollout of that file on a node-by-node basis.
+
+```sh
+oc get nodes -w
+```
+
+You will see worker nodes drain, go NotReady, and Ready again as the config is rolled out.
+
 Next: [Explore More](../03-explore.md)

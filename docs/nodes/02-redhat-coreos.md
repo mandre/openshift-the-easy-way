@@ -46,6 +46,48 @@ required to configure the host.
 
 The configuration is served from the control plane.
 
+To view the content written by ignition on early boot, execute the following:
+
+```sh
+journalctl --no-pager | grep "Ignition finished successfull" -B 100
+```
+
+## Mounted filesystems
+
+### Read-only /usr
+
+To demonstrate, execute the following:
+
+```sh
+touch /usr/evil-user
+touch: cannot touch ‘/usr/evil-user’: Read-only file system
+```
+
+### Writable /var
+
+To demonstrate, execute the following:
+
+```sh
+touch /var/good-user
+```
+
+## SELinux
+
+SELinux is enabled.
+
+```sh
+sestatus
+SELinux status:                 enabled
+SELinuxfs mount:                /sys/fs/selinux
+SELinux root directory:         /etc/selinux
+Loaded policy name:             targeted
+Current mode:                   enforcing
+Mode from config file:          enforcing
+Policy MLS status:              enabled
+Policy deny_unknown status:     allowed
+Max kernel policy version:      31
+```
+
 ## Kubelet
 
 The `kubelet` is packaged with the operating system.  It is not run in a
