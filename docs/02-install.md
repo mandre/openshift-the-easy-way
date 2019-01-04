@@ -7,7 +7,7 @@ cannot determine on its own and providing reasonable defaults for everything
 else. For more advanced users, the installer provides facilities for varying
 levels of customization.
 
-In [supported environments](#supported-environments), the installer is also
+In [supported environments][supported-environments], the installer is also
 capable of provisioning the underlying infrastructure for the cluster. It is
 recommended that most users make use of this functionality in order to avoid
 having to provision their own infrastructure. In unsupported environments or
@@ -20,9 +20,8 @@ installer.
 
 In the prior step, we downloaded the following:
 
-1. installer (e.g. openshift-install-linux-amd64)
-1. pull secret
-1. configured env var for OPENSHIFT_PULL_SECRET_PATH
+1. installer (e.g. `openshift-install-linux-amd64`)
+1. pull secret (e.g. `~/Downloads/pull-secret`)
 
 ## Wizard
 
@@ -80,49 +79,11 @@ INFO kubeadmin user password: Seiv2-q9xJW-2rHR2-UGRRj
 INFO Install complete! The kubeconfig is located here: /home/decarr/go/src/github.com/openshift/installer/auth/kubeconfig
 ```
 
-## Populated Answers
+## Multiple Invocations
 
-If you want to avoid the wizard, its useful to setup a set of env vars for a
-particular cloud platform.
-
-### Amazon Web Services
-
-#### Linux
-
-```
-## location of previously downloaded pull secret
-export OPENSHIFT_INSTALL_PULL_SECRET_PATH=~/Downloads/pull-secret
-## location of SSH public key
-export OPENSHIFT_INSTALL_SSH_PUB_KEY_PATH=~/.ssh/id_rsa.pub
-export OPENSHIFT_INSTALL_PLATFORM=aws
-export OPENSHIFT_INSTALL_EMAIL_ADDRESS=user@example.com
-## name of cluster
-export OPENSHIFT_INSTALL_CLUSTER_NAME=my-cluster
-export OPENSHIFT_INSTALL_PASSWORD=my-password
-export OPENSHIFT_INSTALL_AWS_REGION=us-east-2
-export OPENSHIFT_INSTALL_BASE_DOMAIN=devcluster.example.com
-./openshift-install-linux-amd64 create cluster
-```
-
-#### Mac
-
-```
-## location of previously downloaded pull secret
-export OPENSHIFT_INSTALL_PULL_SECRET_PATH=~/Downloads/pull-secret
-## location of SSH public key
-export OPENSHIFT_INSTALL_SSH_PUB_KEY_PATH=~/.ssh/id_rsa.pub
-export OPENSHIFT_INSTALL_PLATFORM=aws
-export OPENSHIFT_INSTALL_EMAIL_ADDRESS=user@example.com
-## name of cluster
-export OPENSHIFT_INSTALL_CLUSTER_NAME=my-cluster
-export OPENSHIFT_INSTALL_PASSWORD=my-password
-export OPENSHIFT_INSTALL_AWS_REGION=us-east-2
-export OPENSHIFT_INSTALL_BASE_DOMAIN=devcluster.example.com
-./openshift-install-darwin-amd64 create cluster
-```
-
-## Supported Environments
-
-- AWS
+If you want to avoid the wizard in future runs, you can [save the generated `install-config.yaml` and reuse it later][multiple-invocations].
 
 Next: [Exploring the Cluster](03-explore.md)
+
+[multiple-invocations]: https://github.com/openshift/installer/blob/master/docs/user/overview.md#multiple-invocations
+[supported-environments]: https://github.com/openshift/installer/blob/master/README.md#supported-platforms
