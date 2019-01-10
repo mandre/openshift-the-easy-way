@@ -21,16 +21,24 @@ that is read by the `ClusterVersionOperator` to ensure the desired state has con
 To view the list of cluster operators and their status, execute the following:
 
 ```sh
-oc get clusteroperators
-NAME                                                      VERSION                         AVAILABLE   PROGRESSING   SINCE
-machine-api-operator                                      v0.0.0-was-not-built-properly   True                      1m
-machine-config-operator                                   3.11.0-294-g77b0e7bc-dirty      True        False         16s
-openshift-cluster-kube-scheduler-operator                                                                           
-openshift-cluster-openshift-controller-manager-operator   3.11.0                          True        False         
-openshift-cluster-samples-operator                                                        True        False         1h
+# oc get clusteroperator
+NAME                                                      VERSION                         AVAILABLE   PROGRESSING   FAILING   SINCE
+cluster-autoscaler-operator                               v0.0.0-10-g3723562-dirty        True        False         True      2s
+cluster-image-registry-operator                           b4a62e5-dirty                   True        False         False     2d
+machine-api-operator                                      v0.0.0-was-not-built-properly   True                                27s
+machine-config-operator                                   3.11.0-389-g04b1d6ab-dirty      True        False         False     23s
+openshift-apiserver-operator                                                              True        False         False     2m
+openshift-cluster-kube-scheduler-operator                                                 True        False         False     2m
+openshift-cluster-openshift-controller-manager-operator                                                             False     
+openshift-cluster-samples-operator                        4.0.0-alpha1-85ee5a974          True        False         False     2d
+openshift-dns-operator                                    0.0.1                           True        False         False     2d
+openshift-ingress-operator                                                                True        False         False     2d
+openshift-kube-apiserver-operator                                                         True        False         False     2m
+openshift-kube-controller-manager-operator                                                True        False         False     2m
+
 ```
 
-**TODO** UPDATE THIS SECTION WITH FULL LIST AS COMPONENTS MERGE THIS WEEK
+**NOTE** The above list is from the version `4.0.0-9`.
 
 To view more detail about an operator, you can describe it.
 
