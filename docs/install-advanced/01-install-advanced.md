@@ -56,7 +56,7 @@ allow the user to interrupt this process and consume or modify the intermediate
 artifacts (e.g. the Kubernetes manifests that will be installed into the
 cluster). Only the immediate dependencies of a target are written to disk by the
 installer, but the installer can be invoked [multiple
-times](#multiple-invocations).
+times](../02-install.md#multiple-invocations).
 
 
 #### install-config
