@@ -27,7 +27,7 @@ The administrator may configure the following options:
 - pod priority threshold that requires scale up of cluster if pod is pending
 - enable scale up, but not scale down
 
-The [file](../assets/cluster-autsocaler.yaml) demonstrates a sample
+The [file](../../assets/cluster-autoscaler.yaml) demonstrates a sample
 `ClusterAutoscaler` object with all default options.
 
 ## Deploy Cluster Autoscaler
